@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import conectarDB from "./config/db.js";
+import UsuarioRoutes from "./routes/UsuarioRouter.js";
 import path from "path";
 import {fileURLToPath} from 'url';
 
@@ -10,6 +11,8 @@ dotenv.config();
 
 conectarDB();
 
+
+app.use('/api/usuarios', UsuarioRoutes);
 
 const PORT = process.env.PORT || 8000;
 
