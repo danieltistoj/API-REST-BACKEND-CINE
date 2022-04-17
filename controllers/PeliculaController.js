@@ -79,7 +79,7 @@ const updatePeliculaId = async(req,res)=>{
     }
 }
 
-const deletePeliculaId = async(res, req)=>{
+const deletePeliculaId = async(req,res)=>{
     const {id} = req.params
     const existePelicula = await Pelicula.findById(id)
 
@@ -91,7 +91,7 @@ const deletePeliculaId = async(res, req)=>{
     try{
         const  delete_pelicula = await Pelicula.deleteOne({_id: id})
         console.log(delete_pelicula)
-        res.json({msg:"Tarea eliminada correctamente"})
+        res.json({msg:"Pelicula eliminada correctamente"})
     }catch(error){
         console.log("Error")
         console.log(error)
