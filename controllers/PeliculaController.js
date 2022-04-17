@@ -1,5 +1,9 @@
 import Pelicula from "../models/Pelicula.js";
 
+const todos = async(req,res) =>{
+    const todos = await Pelicula.find()
+    res.json(todos)
+}
 
 const registrar = async(req,res)=>{
     const{nombre,categoria,director,duracion,imagen} = req.body
@@ -99,6 +103,7 @@ const deletePeliculaId = async(req,res)=>{
 }   
 
 export{
+    todos,
     registrar,
     getPeliculaCategoria,
     getPeliculaNombre,

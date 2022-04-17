@@ -1,16 +1,17 @@
 import express from "express";
 const router = express.Router()
 import{
+    todos,
     registrar,
     getPeliculaCategoria,
     getPeliculaNombre,
     getPeliculaId,
     getPeliculaDirector,
     updatePeliculaId,
-    deletePeliculaId
-   
+    deletePeliculaId 
 } from "../controllers/PeliculaController.js"
 
+router.get("/todos",todos)
 router.post("/registrar",registrar)
 router.get("/getId/:id",getPeliculaId)
 router.get("/getNombre/:nombre",getPeliculaNombre)
