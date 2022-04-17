@@ -18,12 +18,7 @@ const registrar = async (req, res) => {
       const usuarioGuardado = await usuario.save();
   
       // enviar email al usuario para ser confirmado
-      emailRegistro({
-        email,
-        nombre,
-        token: usuarioGuardado.token,
-      });
-  
+    
       res.json(usuarioGuardado);
     } catch (error) {
       console.log(error);
