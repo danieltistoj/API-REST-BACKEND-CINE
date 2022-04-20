@@ -42,15 +42,9 @@ const registrar = async (req, res) => {
         }
         else{
           const token = generarJWT(existeUsuario._id)
-          res.json({
-            _id:existeUsuario._id,
-            nombre:existeUsuario.nombre,
-            email:existeUsuario.email,
-            token
-          })
           existeUsuario.token = token 
           try{
-            const usuarioModificado = await usuario.save()
+            const usuarioModificado = await existeUsuario.save()
             res.json(usuarioModificado)
         }catch(error){
             console.log(error)
