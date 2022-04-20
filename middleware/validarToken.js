@@ -6,6 +6,7 @@ const validarToken = (req,res,next) =>{
         ? req.headers['authorization'].replace('Bearer ','')
         : undefined
         const data = jwt.verify(token,process.env.JWT_SECRET)
+        req.userData = data
         console.log(data)
         next()
     }catch(error){

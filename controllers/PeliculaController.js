@@ -75,6 +75,8 @@ const updatePeliculaId = async(req,res)=>{
     pelicula.director = req.body.director || pelicula.director
     pelicula.duracion = req.body.duracion || pelicula.duracion
     pelicula.imagen = req.body.imagen || pelicula.imagen
+    console.log(req.userData.id)
+    pelicula.modificador = req.userData.id //obtener quien modifico 
     try{
         const peliculaAlmacenada = await pelicula.save()
         res.json(peliculaAlmacenada)

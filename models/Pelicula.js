@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import Schema from "mongoose"
 
 
 const peliculaSchema = mongoose.Schema(
@@ -27,6 +28,9 @@ const peliculaSchema = mongoose.Schema(
             type: String,
             require: false,
             trim: true
+        },
+        modificador: {
+            type: Schema.Types.ObjectId
         }
     }
 )

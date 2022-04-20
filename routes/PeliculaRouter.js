@@ -13,12 +13,12 @@ import{
 } from "../controllers/PeliculaController.js"
 
 router.get("/todos",validarToken,todos)
-router.post("/registrar",registrar)
+router.post("/registrar",validarToken,registrar)
 router.get("/getId/:id",getPeliculaId)
-router.get("/getNombre/:nombre",getPeliculaNombre)
-router.get("/getCategoria/:categoria",getPeliculaCategoria)
-router.get("/getDirector/:director",getPeliculaDirector)
-router.put("/update/:id",updatePeliculaId)
-router.delete("/delete/:id",deletePeliculaId)
+router.get("/getNombre/:nombre",validarToken,getPeliculaNombre)
+router.get("/getCategoria/:categoria",validarToken,getPeliculaCategoria)
+router.get("/getDirector/:director",validarToken,getPeliculaDirector)
+router.put("/update/:id",validarToken,updatePeliculaId)
+router.delete("/delete/:id",validarToken,deletePeliculaId)
 
 export default router
