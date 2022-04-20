@@ -1,4 +1,5 @@
 import express from "express";
+import { validarToken } from "../middleware/validarToken.js";
 const router = express.Router()
 import{
     todos,
@@ -11,7 +12,7 @@ import{
     deletePeliculaId 
 } from "../controllers/PeliculaController.js"
 
-router.get("/todos",todos)
+router.get("/todos",validarToken,todos)
 router.post("/registrar",registrar)
 router.get("/getId/:id",getPeliculaId)
 router.get("/getNombre/:nombre",getPeliculaNombre)

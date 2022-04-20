@@ -1,5 +1,8 @@
 import Usuario from "../models/Usuario.js";
-
+import generarJWT from "../helpers/generarJWT.js";
+import{
+  comprobarPassword
+} from "../helpers/encriptar.js"
 
 const registrar = async (req, res) => {
     const { email, nombre } = req.body;
@@ -25,8 +28,32 @@ const registrar = async (req, res) => {
     }
   };
 
+  const entrar = async(req,res)=>{
+      const {nombre,password} = req.body //obtenemos del cliente
+      const existeUsuario = await Usuario.findOne({nombre}) //vemos si exste el cliente 
+      
+      if(!existeUsuario){
+        return res.send('El usuario no existe')
+      }else{
+       const passwordCorrecto = await comprobarPassword(password,existeUsuario.password)
+        if(!passwordCorrecto){
+          return res.send('password incorrecto')
+        }
+        else{
+          const token = generarJWT(existeUsuario._id)
+          res.json({
+            _id:existeUsuario._id,
+            nombre:existeUsuario.nombre,
+            email:existeUsuario.email,
+            token
+          })
+        }
+      }
+  }
+
 
   export {
-    registrar
+    registrar,
+    entrar
   };
   

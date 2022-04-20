@@ -15,6 +15,7 @@ dotenv.config();
 conectarDB();
 
 //Lista de dominios permitidos
+/*
 const listaBlanca = [process.env.FRONT_URL]
 const corsOption ={
   origin: function(origin,callBack){
@@ -22,12 +23,12 @@ const corsOption ={
     if(listaBlanca.indexOf(origin)!==-1){
       callBack(null,true)
     }else{
-      callBack(new Error('No se acepto por los cors'))
+      callBack('No se acepto por los cors')
     }
   }
 }
 app.use(cors(corsOption))
-
+*/
 app.use('/api/usuarios', UsuarioRoutes);
 app.use('/api/pelicula',PeliculaRoutes)
 
