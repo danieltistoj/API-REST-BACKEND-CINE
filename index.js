@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import conectarDB from "./config/db.js";
 import UsuarioRoutes from "./routes/UsuarioRouter.js";
 import PeliculaRoutes from "./routes/PeliculaRouter.js"
+import ClienteRouter from "./routes/ClienteRouter.js"
 import cors from "cors"
 import path from "path";
 import {fileURLToPath} from 'url';
@@ -31,6 +32,7 @@ app.use(cors(corsOption))
 */
 app.use('/api/usuarios', UsuarioRoutes);
 app.use('/api/pelicula',PeliculaRoutes)
+app.use('/api/clientes',ClienteRouter)
 
 const PORT = process.env.PORT || 8000;
 
