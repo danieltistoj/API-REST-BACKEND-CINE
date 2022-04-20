@@ -3,6 +3,7 @@ import generarJWT from "../helpers/generarJWT.js";
 import{
   comprobarPassword
 } from "../helpers/encriptar.js"
+import Pelicula from "../models/Pelicula.js";
 
 const registrar = async (req, res) => {
     const { email, nombre } = req.body;
@@ -47,6 +48,13 @@ const registrar = async (req, res) => {
             email:existeUsuario.email,
             token
           })
+          existeUsuario.token = token 
+          try{
+            const usuarioModificado = await usuario.save()
+            res.json(usuarioModificado)
+        }catch(error){
+            console.log(error)
+        }
         }
       }
   }
