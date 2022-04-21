@@ -25,7 +25,7 @@ const registrar = async(req,res)=>{
 
 const getClienteId = async(req,res)=>{
     const {id} = req.params
-    const pelicula = await Cliente.findById(id)
+    const cliente = await Cliente.findById(id)
     if(!cliente){
         const error = new Error("No se encontro")
         return res.status(404).json({msg:error.message})
@@ -44,12 +44,13 @@ const getClienteNombre = async(req,res)=>{
 }
 
 const getClienteNIT = async(req,res)=>{
-    const {NIT} = req.params
-    const cliente = await Cliente.findOne({NIT})
+    const {nit} = req.params
+    const cliente = await Cliente.findOne({NIT:nit})
     if(!cliente){
-        const error = new Error("No se encuentro")
+        const error = new Error("No se encontro")
         return res.status(404).json({msg:error.message})
     }
+    res.json(cliente)
 }
 
 const getClienteEmail = async(req,res)=>{
@@ -63,9 +64,9 @@ const getClienteEmail = async(req,res)=>{
 }
 
 const updateClienteId = async(req,res)=>{
-    const {id} = req.registrar
+    const {id} = req.params  
     const cliente = await Cliente.findById(id)
-    if(!pelicula){
+    if(!cliente){
         const error = new Error("Cliente no encontrado")
         return res.status(404).json({msg:error.message})
     }
@@ -80,6 +81,7 @@ const updateClienteId = async(req,res)=>{
     }catch(error){
         console.log(error)
     }
+    
 }
 
 const deleteClienteId = async(req,res)=>{
